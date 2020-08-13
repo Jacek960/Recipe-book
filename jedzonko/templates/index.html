@@ -21,14 +21,18 @@
                 Zaplanuj <span>Jedzonko</span>
             </a>
             <ul class="nav nounderline text-uppercase">
-                <!--
+                             {% if user.is_authenticated %}
+             <li class="nav-item ml-4 nav-link color-header">{{ user.username }}</li>
+             <div class="circle-div text-center"><i class="fas fa-user icon-user"></i></div>
+             <li class="nav-item ml-4 nav-link color-header"><a href="{% url 'logout' %}">Wyloguj się</a></li>
+             {% else %}
                 <li class="nav-item ml-4">
-                    <a class="nav-link color-header" href="login.html">logowanie</a>
+                    <a class="nav-link color-header" href="{% url 'login' %}">logowanie</a>
                 </li>
                 <li class="nav-item ml-4">
-                    <a class="nav-link color-header" href="registration.html">rejestracja</a>
+                    <a class="nav-link color-header" href="{% url 'signup' %}">rejestracja</a>
                 </li>
-                -->
+                {% endif %}
                 <li class="nav-item ml-4">
                     <a class="nav-link" href="#about">o aplikacji</a>
                 </li>

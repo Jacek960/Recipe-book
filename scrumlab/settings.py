@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'jedzonko'
+    'jedzonko',
+    'accounts.apps.AccountsConfig',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,6 @@ except ModuleNotFoundError:
     print("Brak konfiguracji bazy danych w pliku local_settings.py!")
     print("Uzupełnij dane i spróbuj ponownie!")
     exit(0)
+
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
