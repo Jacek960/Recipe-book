@@ -3,12 +3,16 @@
 {% block title %}Nowy przepis{% endblock %}
 
 {% block content %}
+
+
 <div class="dashboard-content border-dashed p-3 m-4 view-height">
 
-    <div class="mt-4 ml-4 mr-4">
+    <form class="mt-4 ml-4 mr-4" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="row border-bottom border-3">
             <div class="col"><h3 class="color-header text-uppercase">Nowy
                 przepis</h3></div>
+
             <div class="col d-flex justify-content-end mb-2">
                 <button type="submit"
                         class="btn btn-color rounded-0 pt-0 pb-0 pr-4 pl-4">
@@ -22,18 +26,18 @@
             <tr class="d-flex">
                 <th scope="row" class="col-2">Nazwa Przepisu</th>
                 <td class="col-7">
-                    <input class="w-100 p-1" value="">
+                    <input class="w-100 p-1" name="name" required id="id_name" value="">
                 </td>
             </tr>
             <tr class="d-flex">
                 <th scope="row" class="col-2">Opis przepisu</th>
-                <td class="col-7"><textarea class="w-100 p-1"
+                <td class="col-7"><textarea name="description"  required id="id_description" class="w-100 p-1"
                                             rows="5"></textarea></td>
             </tr>
             <tr class="d-flex">
                 <th scope="row" class="col-2">Przygotowani(minuty)</th>
                 <td class="col-3">
-                    <input class="p-1" type="number" value="">
+                    <input class="p-1" type="number" name="preparation_time" required id="id_preparation_time" value="">
                 </td>
             </tr>
             </tbody>
@@ -48,14 +52,16 @@
         </div>
         <div class="row d-flex">
             <div class="col-5 p-4">
-                <textarea class="w-100 p-1" rows="10"></textarea>
+                <textarea name="method_preparation" class="w-100 p-1" rows="10"></textarea>
             </div>
             <div class="col-2"></div>
 
             <div class="col-5 p-4">
-                <textarea class="w-100 p-1" rows="10"></textarea>
+                {{ form.ingredients }}
             </div>
+            <p><label for="id_recipe_image">Zdjęcie:</label> <input type="file" name="recipe_image" accept="image/*" id="id_recipe_image"></p>
         </div>
+    </form>
     </div>
-</div>
+
 {% endblock content %}
