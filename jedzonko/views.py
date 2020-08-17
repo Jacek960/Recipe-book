@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import CreateView
-from jedzonko.forms import ReceipeForm
+from jedzonko.forms import ReceipeForm, PlanForm
 
 from jedzonko.models import Receipe, Plan
 
@@ -33,3 +33,12 @@ class RecipeCreateView(CreateView):
     template_name = 'jedzonko/app-add-recipe.html'
 
 
+class PlanListView(View):
+    def get(self, request):
+        plan_list = Plan.objects.all().order_by('name')
+        return render(request, "jedzonko/app-schedules.html", {'plan_list': plan_list})
+
+class PlanCreateView(CreateView):
+    form_class = PlanForm
+    success_url = reverse_lazy('plan_list')
+    template_name = 'jedzonko/app-add-schedules.html'
