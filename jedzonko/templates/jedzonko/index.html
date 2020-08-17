@@ -24,6 +24,9 @@
                              {% if user.is_authenticated %}
              <li class="nav-item ml-4 nav-link color-header">{{ user.username }}</li>
              <div class="circle-div text-center"><i class="fas fa-user icon-user"></i></div>
+                                 <li class="nav-item ml-4">
+                    <a class="nav-link color-header" href="{% url 'dashbord' %}">Panel Sterowania</a>
+                </li>
              <li class="nav-item ml-4 nav-link color-header"><a href="{% url 'logout' %}">Wyloguj się</a></li>
              {% else %}
                 <li class="nav-item ml-4">
@@ -35,9 +38,6 @@
                 {% endif %}
                 <li class="nav-item ml-4">
                     <a class="nav-link" href="#about">o aplikacji</a>
-                </li>
-                <li class="nav-item ml-4">
-                    <a class="nav-link disabled" href="recipes.html">Przepisy</a>
                 </li>
                 <li class="nav-item ml-4">
                     <a class="nav-link disabled" href="#contact">Kontakt</a>

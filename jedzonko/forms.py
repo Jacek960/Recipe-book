@@ -1,7 +1,6 @@
 from django import forms
-from django.forms import ModelMultipleChoiceField, SelectMultiple
 
-from jedzonko.models import Receipe, Plan
+from jedzonko.models import Receipe, Plan, Recipeplan
 
 
 class ReceipeForm(forms.ModelForm):
@@ -13,3 +12,8 @@ class PlanForm(forms.ModelForm):
     class Meta:
         model= Plan
         fields = ['name','description']
+
+class SchedulesMeal(forms.ModelForm):
+    class Meta:
+        model = Recipeplan
+        fields = ['meal_name','order','day_name','plan','recipe']
