@@ -1,10 +1,11 @@
 from datetime import datetime
 
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import CreateView, DetailView, ListView
-from jedzonko.forms import ReceipeForm, PlanForm, SchedulesMeal, IngredientForm
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
+from jedzonko.forms import ReceipeForm, PlanForm, SchedulesMealForm, IngredientForm
 
 from jedzonko.models import Receipe, Plan, Dayname, Recipeplan, Ingredients
 
@@ -33,6 +34,13 @@ class RecipeCreateView(CreateView):
     template_name = 'jedzonko/app-add-recipe.html'
 
 
+class RecipeUpdate(UpdateView):
+    model = Receipe
+    form_class = ReceipeForm
+    template_name = 'jedzonko/app-edit-recipe.html'
+    success_url = reverse_lazy('recipe_list')
+
+
 class PlanListView(View):
     def get(self, request):
         plan_list = Plan.objects.all().order_by('name')
@@ -42,6 +50,12 @@ class PlanCreateView(CreateView):
     form_class = PlanForm
     success_url = reverse_lazy('plan_list')
     template_name = 'jedzonko/app-add-schedules.html'
+
+class PlanUpdate(UpdateView):
+    model = Plan
+    form_class = PlanForm
+    template_name = 'jedzonko/app-edit-schedules.html'
+    success_url = reverse_lazy('plan_list')
 
 class ArticleDetailView(DetailView):
     model = Receipe
@@ -62,7 +76,7 @@ class PlanDetailView(View):
 
 
 class SchedulesMealCreateView(CreateView):
-    form_class = SchedulesMeal
+    form_class = SchedulesMealForm
     success_url = reverse_lazy('add-plan-recipe')
     template_name = 'jedzonko/app-schedules-meal-recipe.html'
 
@@ -76,4 +90,7 @@ class IngredientsListView(ListView):
     paginate_by = 50
     template_name = 'jedzonko/app-ingredients.html'
     model = Ingredients
+
+
+
 

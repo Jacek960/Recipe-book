@@ -13,7 +13,7 @@ class PlanForm(forms.ModelForm):
         model= Plan
         fields = ['name','description']
 
-class SchedulesMeal(forms.ModelForm):
+class SchedulesMealForm(forms.ModelForm):
     class Meta:
         model = Recipeplan
         fields = ['meal_name','order','day_name','plan','recipe']

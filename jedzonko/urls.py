@@ -1,7 +1,8 @@
 from django.urls import path
 
 from jedzonko.views import IndexView, RecipeListView, DashboardView, RecipeCreateView, PlanListView, PlanCreateView, \
-    ArticleDetailView, PlanDetailView, SchedulesMealCreateView, IngredientsCreateView, IngredientsListView
+    ArticleDetailView, PlanDetailView, SchedulesMealCreateView, IngredientsCreateView, IngredientsListView, \
+    RecipeUpdate, PlanUpdate
 
 urlpatterns = [
     path('', IndexView.as_view(), name='home'),
@@ -15,6 +16,9 @@ urlpatterns = [
     path('plan/add-recipe/', SchedulesMealCreateView.as_view(), name='add-plan-recipe'),
     path('ingredient/add/', IngredientsCreateView.as_view(), name='add_ingredient'),
     path('ingredient/', IngredientsListView.as_view(), name='ingredient'),
+    path('recipe/modify/<int:pk>/', RecipeUpdate.as_view(), name='update_recipe'),
+    path('plan/modify/<int:pk>/', PlanUpdate.as_view(), name='update_plan'),
+
 
 
 

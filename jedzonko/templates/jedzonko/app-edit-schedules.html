@@ -5,24 +5,26 @@
 
     <div class="row border-bottom border-3 p-1 m-1">
         <div class="col noPadding">
-            <h3 class="color-header text-uppercase">NOWY PLAN</h3>
+            <h3 class="color-header text-uppercase">EDYTUJ PLAN</h3>
         </div>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
         <div class="col d-flex justify-content-end mb-2 noPadding">
-            <a href="#" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Zapisz</a>
+            <input type="submit" value="Zapisz" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">
         </div>
     </div>
 
     <div class="schedules-content">
-        <form>
+
             <div class="form-group row">
                 <label for="planName"
                        class="col-sm-2 label-size col-form-label">
                     Nazwa planu
                 </label>
                 <div class="col-sm-10">
-                    <input class="form-control"
-                           value="Plan jarski na bezmięsny tydzień"
-                           id="planName" placeholder="Nazwa planu">
+                    <input class="form-control" name="name"
+                           value="{{ plan.name }}"
+                           required id="id_name" placeholder="Nazwa planu">
                 </div>
             </div>
             <div class="form-group row">
@@ -32,13 +34,17 @@
                 </label>
                 <div class="col-sm-10">
                                     <textarea class="form-control" rows="5"
-                                              id="planDescription"
-                                              placeholder="Opis plany">
-Pojęcie kuchnia wegetariańska określa pożywienie, które ani nie zawiera mięsa, ani nie zostało przygotowane na bazie pochodzącej z mięsa (np. na rosole drobiowym). Laktoowowegetarianie (najczęściej spotykany typ wegetarian w zachodnim świecie) spożywają nabiał, laktowegetarianie wykluczają jaja, ale nie inne produkty nabiałowe.
+                                              required id="id_description" name="description"
+                                              placeholder="Opis plany">{{ plan.description }}
                                     </textarea>
                 </div>
             </div>
         </form>
     </div>
+{#<form action="" method="post" enctype="multipart/form-data">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <input type="submit" value="Wyślij">#}
+{#</form>#}
 </div>
 {% endblock content %}
