@@ -1,6 +1,6 @@
 from django import forms
 
-from jedzonko.models import Receipe, Plan, Recipeplan
+from jedzonko.models import Receipe, Plan, Recipeplan, Ingredients
 
 
 class ReceipeForm(forms.ModelForm):
@@ -17,3 +17,8 @@ class SchedulesMeal(forms.ModelForm):
     class Meta:
         model = Recipeplan
         fields = ['meal_name','order','day_name','plan','recipe']
+
+class IngredientForm(forms.ModelForm):
+    class Meta:
+        model = Ingredients
+        fields = ['name']

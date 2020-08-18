@@ -3,10 +3,10 @@ from datetime import datetime
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import CreateView, DetailView
-from jedzonko.forms import ReceipeForm, PlanForm, SchedulesMeal
+from django.views.generic import CreateView, DetailView, ListView
+from jedzonko.forms import ReceipeForm, PlanForm, SchedulesMeal, IngredientForm
 
-from jedzonko.models import Receipe, Plan, Dayname, Recipeplan
+from jedzonko.models import Receipe, Plan, Dayname, Recipeplan, Ingredients
 
 
 class IndexView(View):
@@ -65,4 +65,15 @@ class SchedulesMealCreateView(CreateView):
     form_class = SchedulesMeal
     success_url = reverse_lazy('add-plan-recipe')
     template_name = 'jedzonko/app-schedules-meal-recipe.html'
+
+
+class IngredientsCreateView(CreateView):
+    form_class = IngredientForm
+    success_url = reverse_lazy('add_ingredient')
+    template_name = 'jedzonko/app-add-ingredient.html'
+
+class IngredientsListView(ListView):
+    paginate_by = 50
+    template_name = 'jedzonko/app-ingredients.html'
+    model = Ingredients
 
