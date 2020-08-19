@@ -40,6 +40,7 @@
                         </div>
                     </div>
                 </div>
+    {% if plan_exist|length  >= 1 %}
                 <div class="m-4 p-4 border-dashed">
                     <h2 class="dashboard-content-title">
                         <span>Ostatnio dodany plan:</span> {{ last_plan }}
@@ -65,5 +66,12 @@
                                 {% endfor %}
                         {% endfor %}
                     </table>
+                {% else %}
+                <div class="m-4 p-4 border-dashed">
+                    <h2 class="dashboard-content-title">
+                        <span>Dodaj plan:</span>
+                    </h2>
+
+                {% endif %}
                 </div>
 {% endblock content %}

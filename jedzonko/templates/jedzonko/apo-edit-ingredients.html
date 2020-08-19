@@ -20,17 +20,16 @@
             <div class="form-group row">
                 <label for="planName"
                        class="col-sm-2 label-size col-form-label">
-                    Nazwa Składnika
+                    Edytuj Składnik
                 </label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control"
-                           placeholder="Nazwa składnika" name="name" maxlength="255" required id="id_name">
+                           name="name" maxlength="255" required id="id_name" value="{{ ingredients.name }}">
                 </div>
             </div>
         </form>
     </div>
 </div>
-
 </div>
 {% endblock content %}
 

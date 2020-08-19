@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -18,6 +19,7 @@ class Receipe(models.Model):
     votes = models.IntegerField(default=0)
     method_preparation = models.TextField(null=True)
     recipe_image= models.ImageField(upload_to='recipe/',blank=True, null=True)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -27,6 +29,7 @@ class Plan(models.Model):
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     recipes = models.ManyToManyField(Receipe, through='Recipeplan')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

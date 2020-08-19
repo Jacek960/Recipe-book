@@ -1,3 +1,5 @@
+from urllib import request
+
 from django import forms
 
 from jedzonko.models import Receipe, Plan, Recipeplan, Ingredients
@@ -17,6 +19,13 @@ class SchedulesMealForm(forms.ModelForm):
     class Meta:
         model = Recipeplan
         fields = ['meal_name','order','day_name','plan','recipe']
+
+    # def __init__(self, user=None, **kwargs):
+    #     super(SchedulesMealForm, self).__init__(**kwargs)
+    #     if user:
+    #         self.fields['plan'].queryset = Plan.objects.filter(owner=user)
+
+
 
 class IngredientForm(forms.ModelForm):
     class Meta:

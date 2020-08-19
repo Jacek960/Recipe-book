@@ -1,0 +1,21 @@
+{% extends '__base__.html' %}
+
+{% block content %}
+    <br>
+
+    <h3>Czy napewno chcesz usunąć  {{ object }} ???</h3>
+    <br>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p> {{ object.meal_name }} - {{ object.day_name }} </p>
+        <p><strong>Danie:</strong> {{ object.recipe }}</p>
+        <p><strong>Plan:</strong>  {{ object.plan }}</p>
+        <br>
+
+        <input class="btn btn-danger" type="submit" value="Tak - usuń"/>
+    </form>
+    <br>
+    <a href=" {% url 'plan_details' object.plan_id %}  ">
+        <button type="button" class="btn btn-success">Nie - wróc do moich przepisów</button>
+    </a>
+{% endblock %}
