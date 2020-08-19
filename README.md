@@ -12,7 +12,7 @@
 * [Contact](#contact)
 
 ## General info
-Project rewriten. Previously  done as a part of Scrumlab project with [Annliv81](https://github.com/Annliv81)  in CoderLab 
+Project rewritten. Previously done as a part of Scrumlab project with [Annliv81](https://github.com/Annliv81)  in CoderLab 
 
 ## Screenshots
 Home Page
