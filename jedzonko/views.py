@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import random
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -12,7 +12,11 @@ from jedzonko.models import Receipe, Plan, Dayname, Recipeplan, Ingredients
 
 class IndexView(View):
     def get(self, request):
-        return render(request, "jedzonko/index.html", )
+        recipe_list = list(Receipe.objects.all())
+        random.shuffle(recipe_list)
+        carusel_active =recipe_list[0]
+        recipe_shuffle = recipe_list[1:3]
+        return render(request, "jedzonko/index.html", {'recipe_shuffle':recipe_shuffle,'carusel_active':carusel_active})
 
 class RecipeListView(View):
     def get(self, request):
