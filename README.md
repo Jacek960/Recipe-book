@@ -1,5 +1,5 @@
 # Menu and recipe management system 
-> Websites for Menu and recipe management system
+> Website - Menu and recipe management system
 
 ## Table of contents
 * [General info](#general-info)
